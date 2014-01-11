@@ -1,0 +1,13 @@
+<?php
+
+/**
+ * Implements hook_menu().
+ */
+function pilot_menu() {
+  $items['admin/config/pilot'] = array(
+    'title' => 'Pilot',
+    'description' => 'Pilot configuration pages.',
+    'route_name' => 'pilot.admin',
+  );
+  return $items;
+}

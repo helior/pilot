@@ -1,0 +1,6 @@
+pilot.admin:
+  path: '/admin/config/pilot'
+  defaults:
+    _title: 'Pilot'
+  requirements:
+    _permission: 'administer site configuration'
