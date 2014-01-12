@@ -6,8 +6,15 @@
 function pilot_menu() {
   $items['admin/config/pilot'] = array(
     'title' => 'Pilot',
+    'description' => 'Pilot Administrative pages',
+    'position' => 'right',
+    'route_name' => 'pilot.admin_config_pilot',
+  );
+  
+  $items['admin/config/pilot/basic'] = array(
+    'title' => 'Pilot Basic Conf',
     'description' => 'Pilot configuration pages.',
-    'route_name' => 'pilot.admin',
+    'route_name' => 'pilot.admin_basic',
   );
   return $items;
 }

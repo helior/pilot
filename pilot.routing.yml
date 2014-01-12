@@ -1,6 +1,15 @@
-pilot.admin:
+pilot.admin_config_pilot:
   path: '/admin/config/pilot'
   defaults:
+    _content: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
     _title: 'Pilot'
+  requirements:
+    _permission: 'access administration pages'
+
+pilot.admin_basic:
+  path: '/admin/config/pilot/basic'
+  defaults:
+    _title: 'Pilot Basic Configuration'
+    _form: 'Drupal\pilot\Form\BasicForm'
   requirements:
     _permission: 'administer site configuration'
