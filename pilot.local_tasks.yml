@@ -1,0 +1,4 @@
+pilot.admin_basic:
+  route_name: pilot.admin_basic
+  title: 'Basic Pilot Configuration'
+  base_route: pilot.admin_basic

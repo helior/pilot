@@ -28,6 +28,11 @@ class BasicForm extends ConfigFormBase {
       '#title' => t('One'),
       '#default_value' => $config->get('one'),
     );
+    $form['url'] = array(
+      '#type' => 'url',
+      '#title' => t('URL'),
+      '#default_value' => $config->get('url'),
+    );
 
     return parent::buildForm($form, $form_state);
   }
@@ -38,6 +43,7 @@ class BasicForm extends ConfigFormBase {
   public function submitForm(array &$form, array &$form_state) {
     $this->configFactory->get('pilot.basic')
       ->set('one', $form_state['values']['one'])
+      ->set('url', $form_state['values']['url'])
       ->save();
 
     parent::submitForm($form, $form_state);

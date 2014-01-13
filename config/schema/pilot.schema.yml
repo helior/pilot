@@ -5,3 +5,6 @@ pilot.basic:
     one:
       type: string
       label: 'A field named One'
+    url:
+      type: string
+      label: 'A field named URL'
