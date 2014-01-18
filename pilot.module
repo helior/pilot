@@ -1,6 +1,16 @@
 <?php
 
 /**
+ * Implements hook_help().
+ */
+function pilot_help($path, $arg) {
+  switch ($path) {
+    case 'admin/help#pilot':
+      return t('No help for you!');
+  }
+}
+
+/**
  * Implements hook_menu().
  */
 function pilot_menu() {
@@ -8,13 +18,26 @@ function pilot_menu() {
     'title' => 'Pilot',
     'description' => 'Pilot Administrative pages',
     'position' => 'right',
-    'route_name' => 'pilot.admin_config_pilot',
+    'route_name' => 'pilot.admin',
   );
-  
+
   $items['admin/config/pilot/basic'] = array(
     'title' => 'Pilot Basic Conf',
     'description' => 'Pilot configuration pages.',
     'route_name' => 'pilot.admin_basic',
   );
   return $items;
+}
+
+/**
+ * Implements hook_permission().
+ */
+function pilot_permission() {
+  return array(
+    'fly high' => array(
+      'title' => t('Fly High'),
+      'description' => t('Grant permission to fly high.'),
+      'restrict access' => TRUE,
+    ),
+  );
 }

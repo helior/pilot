@@ -1,4 +1,4 @@
-pilot.admin_config_pilot:
+pilot.admin:
   path: '/admin/config/pilot'
   defaults:
     _content: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
