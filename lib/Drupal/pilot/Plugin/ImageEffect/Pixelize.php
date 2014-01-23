@@ -7,26 +7,41 @@
 
 namespace Drupal\pilot\Plugin\ImageEffect;
 
-use Drupal\image\Plugin\ImageEffect\ResizeImageEffect;
+use Drupal\Core\Image\ImageInterface;
+use Drupal\image\ConfigurableImageEffectInterface;
+use Drupal\image\ImageEffectBase;
 
 /**
- * Resizes an image resource to a single pixel.
+ * Pixelize an image.
  *
  * @ImageEffect(
  *   id = "pilot_pixelize",
  *   label = @Translation("Pixelize"),
- *   description = @Translation("Test image effect that samples down an image to a single pixel.")
+ *   description = @Translation("Test image effect that pixelizes an image.")
  * )
  */
-class Pixelize extends ResizeImageEffect {
+class Pixelize extends ImageEffectBase implements ConfigurableImageEffectInterface {
+
+  /**
+   * {@inheritdoc}
+   */
+  public function transformDimensions(array &$dimensions) {
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function applyEffect(ImageInterface $image) {
+    return imagefilter($image->getResource(), IMG_FILTER_PIXELATE, $this->configuration['size'], $this->configuration['advanced']);
+  }
 
   /**
    * {@inheritdoc}
    */
   public function defaultConfiguration() {
     return array(
-      'width' => 1,
-      'height' => 1,
+      'size' => 50,
+      'advanced' => 0,
     );
   }
 
@@ -34,9 +49,21 @@ class Pixelize extends ResizeImageEffect {
    * {@inheritdoc}
    */
   public function getForm() {
-    $form = parent::getForm();
-    $form['width']['#disabled'] = true;
-    $form['height']['#disabled'] = true;
+
+    $form['size'] = array(
+      '#type' => 'number',
+      '#title' => t('Pixel size'),
+      '#default_value' => $this->configuration['size'],
+      '#required' => TRUE,
+      '#min' => 2,
+    );
+
+    $form['advanced'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Use advanced pixelization effect'),
+      '#default_value' => $this->configuration['advanced'],
+    );
+
     return $form;
   }
 
