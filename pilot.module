@@ -43,6 +43,13 @@ function pilot_permission() {
 }
 
 
+/**
+ * Implements hook_pilot_person_info_alter()
+ */
+function pilot_pilot_person_info_alter(&$persons) {
+  $persons['dave']['age'] = '12';
+}
+
 function pilot_colorize_colors() {
   return array(
     'lime' => array(

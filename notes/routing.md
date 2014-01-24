@@ -1,6 +1,6 @@
 ## Routing
 
-Hook Menu used to be the only sort of routing declaration required, but now there is a conjunction of a *.routing.yml and hook_menu(). Entries in hook_menu() reference a `rout_name`, which is defined in the `modulename.routing.yml` file.
+Hook Menu used to be the only sort of routing declaration required, but now there is a conjunction of a *.routing.yml and hook_menu(). Entries in hook_menu() reference a `route_name`, which is defined in the `modulename.routing.yml` file.
 
 Here's an example
 ```yml

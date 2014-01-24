@@ -1,0 +1,4 @@
+services:
+  plugin.manager.pilot.person:
+    class: Drupal\pilot\Plugin\PersonPluginManager
+    parent: default_plugin_manager
