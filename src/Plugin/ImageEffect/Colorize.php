@@ -21,19 +21,12 @@ use Drupal\image\ImageEffectBase;
  * )
  */
 class Colorize extends ImageEffectBase {
-
-  /**
-   * {@inheritdoc}
-   */
-  public function transformDimensions(array &$dimensions) {
-  }
-
   /**
    * {@inheritdoc}
    */
   public function applyEffect(ImageInterface $image) {
     list($r,$g,$b) = $this->pluginDefinition['colors'];
-    return imagefilter($image->getResource(), IMG_FILTER_COLORIZE, $r, $g, $b);
+    return imagefilter($image->getToolkit()->getResource(), IMG_FILTER_COLORIZE, $r, $g, $b);
   }
 
 }

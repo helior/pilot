@@ -17,7 +17,7 @@ class ColorizeDerivative extends DerivativeBase {
   /**
    * {@inheritdoc}
    */
-  public function getDerivativeDefinitions(array $base_plugin_definition) {
+  public function getDerivativeDefinitions($base_plugin_definition) {
   	foreach (pilot_colorize_colors() as $name => $info) {
   		$this->derivatives[$name] = $base_plugin_definition;
   		$this->derivatives[$name]['label'] = t('Colorize to @color', array('@color' => $info['title']));

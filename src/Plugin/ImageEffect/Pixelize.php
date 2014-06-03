@@ -25,14 +25,8 @@ class Pixelize extends ImageEffectBase implements ConfigurableImageEffectInterfa
   /**
    * {@inheritdoc}
    */
-  public function transformDimensions(array &$dimensions) {
-  }
-
-  /**
-   * {@inheritdoc}
-   */
   public function applyEffect(ImageInterface $image) {
-    return imagefilter($image->getResource(), IMG_FILTER_PIXELATE, $this->configuration['size'], $this->configuration['advanced']);
+    return imagefilter($image->getToolkit()->getResource(), IMG_FILTER_PIXELATE, $this->configuration['size'], $this->configuration['advanced']);
   }
 
   /**
