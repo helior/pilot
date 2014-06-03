@@ -21,7 +21,7 @@ class BasicForm extends ConfigFormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, array &$form_state) {
-    $config = $this->configFactory->get('pilot.basic');
+    $config = $this->config('pilot.basic');
 
     $form['one'] = array(
       '#type' => 'textfield',
@@ -41,7 +41,7 @@ class BasicForm extends ConfigFormBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, array &$form_state) {
-    $this->configFactory->get('pilot.basic')
+    $this->config('pilot.basic')
       ->set('one', $form_state['values']['one'])
       ->set('url', $form_state['values']['url'])
       ->save();
