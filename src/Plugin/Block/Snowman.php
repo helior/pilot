@@ -14,7 +14,7 @@ use Drupal\block\BlockBase;
  *
  * @Block(
  *   id = "pilot_snowman",
- *   admin_label = @Translation("Snowman unicode character")
+ *   admin_label = @Translation("Indifferent Snowman")
  * )
  */
 class Snowman extends BlockBase {
