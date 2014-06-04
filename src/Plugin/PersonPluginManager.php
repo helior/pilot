@@ -24,11 +24,15 @@ class PersonPluginManager extends DefaultPluginManager {
    * {@inheritdoc}
    */
   public function __construct(\Traversable $namespaces, CacheBackendInterface $cache_backend, LanguageManager $language_manager, ModuleHandlerInterface $module_handler) {
-    $this->discovery = new AnnotatedClassDiscovery('Plugin/Person', $namespaces, 'Drupal\pilot\Annotation\Person');
-    $this->discovery = new ContainerDerivativeDiscoveryDecorator($this->discovery);
-    $this->factory = new ContainerFactory($this);
+    parent::__construct('Plugin/Person', $namespaces, $module_handler, 'Drupal\pilot\Annotation\Person');
 
-    $this->alterInfo($module_handler, 'pilot_person_info');
+    // Internally, this is happening in the DefaultPluginManager...
+    // $this->discovery = new AnnotatedClassDiscovery('Plugin/Person', $namespaces, 'Drupal\pilot\Annotation\Person');
+    // $this->discovery = new ContainerDerivativeDiscoveryDecorator($this->discovery);
+    // $this->factory = new ContainerFactory($this);
+    // $this->moduleHandler = $module_handler;
+
+    $this->alterInfo('pilot_person_info');
     $this->setCacheBackend($cache_backend, $language_manager, 'pilot_person_plugins');
   }
 
