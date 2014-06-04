@@ -11,25 +11,6 @@ function pilot_help($path, $arg) {
 }
 
 /**
- * Implements hook_menu().
- */
-function pilot_menu() {
-  $items['admin/config/pilot'] = array(
-    'title' => 'Pilot',
-    'description' => 'Pilot Administrative pages',
-    'position' => 'right',
-    'route_name' => 'pilot.admin',
-  );
-
-  $items['admin/config/pilot/basic'] = array(
-    'title' => 'Pilot Basic Conf',
-    'description' => 'Pilot configuration pages.',
-    'route_name' => 'pilot.admin_basic',
-  );
-  return $items;
-}
-
-/**
  * Implements hook_permission().
  */
 function pilot_permission() {
